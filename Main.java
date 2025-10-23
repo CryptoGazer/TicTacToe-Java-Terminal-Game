@@ -262,12 +262,10 @@ class Main {
             for(Player playerInGame: game.players) {
                 if(movesBreakFlag) {
                     System.out.println("\n" + playerInGame.getNick() + ", your turn (" + playerInGame.getSide() + ")\n");
-//                    System.out.println(Arrays.toString(playerInGame.getCoords()));
                     game.moveAndChoose(playerInGame);
                     game.gameFieldToDisp[1][1] = StringFunc.addStrings(game.gameFieldToDisp[1][1].trim(), "|");
                     playerInGame.setCoords(0, 1);
                     playerInGame.setCoords(1, 1);
-//                    System.out.println("VictoryCheck: " + game.victoryCheck());
                     if(game.victoryCheck() == 9) {
                         game.victoryCase(game.players[0]);
                         game.lossCase(game.players[1]);
@@ -316,7 +314,6 @@ class Game {
 
         System.out.println();
         displayField(gameFieldToDisp);
-//        displayField(gameFieldValues)
         System.out.println();
 
         while(directionFlag) {
@@ -348,12 +345,10 @@ class Game {
                     gameFieldValues[currentPlayerCoords[0]][currentPlayerCoords[1]] = numSide;
                     gameFieldToDisp[currentPlayerCoords[0]][currentPlayerCoords[1]] = " _" + side + "_ ";
                     displayField(gameFieldToDisp);
-//                    displayField(gameFieldValues);
                     break;
                 } else {
                     System.out.println("This cell is already full!\n");
                     displayField(gameFieldToDisp);
-//                    displayField(gameFieldValues);
                 }
 
             }
@@ -363,28 +358,24 @@ class Game {
                     switch(move) {
                         case 'w' -> {
                             pointerCheck();
-//                            System.out.println(Arrays.toString(currentPlayerCoords));
                             player.setCoords(0, currentPlayerCoords[0] - 1);
                             currentPlayerCoords = player.getCoords();
                             choosingProcess(currentPlayerCoords);
                         }
                         case 's' -> {
                             pointerCheck();
-//                            System.out.println(Arrays.toString(currentPlayerCoords));
                             player.setCoords(0, currentPlayerCoords[0] + 1);
                             currentPlayerCoords = player.getCoords();
                             choosingProcess(currentPlayerCoords);
                         }
                         case 'd' -> {
                             pointerCheck();
-//                            System.out.println(Arrays.toString(currentPlayerCoords));
                             player.setCoords(1, currentPlayerCoords[1] + 1);
                             currentPlayerCoords = player.getCoords();
                             choosingProcess(currentPlayerCoords);
                         }
                         case 'a' -> {
                             pointerCheck();
-//                            System.out.println(Arrays.toString(currentPlayerCoords));
                             player.setCoords(1, currentPlayerCoords[1] - 1);
                             currentPlayerCoords = player.getCoords();
                             choosingProcess(currentPlayerCoords);
@@ -424,7 +415,6 @@ class Game {
         String currentDispFieldPosition = gameFieldToDisp[currentPlayerCoords[0]][currentPlayerCoords[1]];
         gameFieldToDisp[currentPlayerCoords[0]][currentPlayerCoords[1]] = StringFunc.addStrings(currentDispFieldPosition.trim(), "|");
         displayField(gameFieldToDisp);
-//        displayField(gameFieldValues);
     }
 
     private void pointerCheck() {
